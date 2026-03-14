@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Худі Oversize",
+      "price": 1200,
+      "image": "https://via.placeholder.com/300x350"
+    },
+    {
+      "id": 2,
+      "name": "Куртка Street",
+      "price": 2500,
+      "image": "https://via.placeholder.com/300x350"
+    },
+    {
+      "id": 3,
+      "name": "Джинси Slim",
+      "price": 1800,
+      "image": "https://via.placeholder.com/300x350"
+    }
+  ]
+}
