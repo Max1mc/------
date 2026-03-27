@@ -2,7 +2,7 @@
 
 if(document.querySelector(".products-grid")){
 
-fetch("products.json")
+fetch("bd.json")
 .then(res=>res.json())
 .then(data=>{
 
@@ -33,7 +33,7 @@ container.appendChild(card)
 
 function addToCart(id){
 
-fetch("products.json")
+fetch("bd.json")
 .then(res=>res.json())
 .then(data=>{
 
