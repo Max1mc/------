@@ -27,15 +27,20 @@
             <p><strong>1200 грн</strong></p>
 
             <p>Оберіть розмір:</p>
-            <select>
+            <select id="size">
                 <option>S</option>
-                <option>M</option>
+                <option selected>M</option>
                 <option>L</option>
             </select>
 
             <br><br>
-            <button onclick="addToCart('Худі Oversize',1200)">В кошик</button>
-            <button onclick="addToWishlist('Худі Oversize',1200)">❤️</button>
+            <button onclick="addProductToCart('Худі Oversize',1200)">
+                В кошик
+            </button>
+
+            <button onclick="addToWishlist('Худі Oversize',1200)">
+                ❤️
+            </button>
 
             <h3>Опис</h3>
             <p>Стильне худі з м’якого матеріалу.</p>

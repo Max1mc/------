@@ -1,13 +1,21 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-// CART
-function addToCart(name, price) {
-    cart.push({name, price});
+// ДОБАВИТЬ В КОРЗИНУ С РАЗМЕРОМ
+function addToCart(name, price, size = "M") {
+    cart.push({name, price, size});
     localStorage.setItem("cart", JSON.stringify(cart));
     alert("Додано в кошик ✅");
 }
 
+// ДОБАВИТЬ В ОБРАНЕ
+function addToWishlist(name, price) {
+    wishlist.push({name, price});
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    alert("Додано в обране ❤️");
+}
+
+// КОРЗИНА
 function renderCart() {
     const list = document.getElementById("cart-list");
     if (!list) return;
@@ -17,9 +25,10 @@ function renderCart() {
 
     cart.forEach((item, i) => {
         total += item.price;
+
         list.innerHTML += `
             <div class="cart-item">
-                <span>${item.name}</span>
+                <span>${item.name} (${item.size})</span>
                 <span>${item.price} грн</span>
                 <button onclick="removeCart(${i})">❌</button>
             </div>`;
@@ -35,13 +44,7 @@ function removeCart(i){
     renderCart();
 }
 
-// WISHLIST
-function addToWishlist(name, price){
-    wishlist.push({name, price});
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    alert("Додано в обране ❤️");
-}
-
+// ОБРАНЕ
 function renderWishlist(){
     const list = document.getElementById("wishlist-list");
     if(!list) return;
@@ -64,7 +67,7 @@ function removeWish(i){
     renderWishlist();
 }
 
-// CHECKOUT
+// ОФОРМЛЕНИЕ
 function checkout(){
     if(cart.length === 0){
         alert("Кошик порожній");
@@ -74,6 +77,12 @@ function checkout(){
         localStorage.setItem("cart", JSON.stringify(cart));
         renderCart();
     }
+}
+
+// ДЛЯ PRODUCT PAGE
+function addProductToCart(name, price) {
+    const size = document.getElementById("size").value;
+    addToCart(name, price, size);
 }
 
 // INIT

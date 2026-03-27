@@ -22,21 +22,61 @@
     <h1>Каталог товарів</h1>
 
     <div class="products-grid">
+
+        <!-- Товар 1 -->
         <div class="card">
             <img src="https://via.placeholder.com/300x350">
             <h3>Джинси Slim</h3>
             <p>1800 грн</p>
-            <button onclick="addToCart('Джинси Slim',1800)">В кошик</button>
-            <button onclick="addToWishlist('Джинси Slim',1800)">❤️</button>
+
+            <p>Розмір:</p>
+            <select id="size1">
+                <option>S</option>
+                <option selected>M</option>
+                <option>L</option>
+            </select>
+
+            <br><br>
+            <button onclick="addToCart(
+                'Джинси Slim',
+                1800,
+                document.getElementById('size1').value
+            )">
+                В кошик
+            </button>
+
+            <button onclick="addToWishlist('Джинси Slim',1800)">
+                ❤️
+            </button>
         </div>
 
+        <!-- Товар 2 -->
         <div class="card">
             <img src="https://via.placeholder.com/300x350">
             <h3>Футболка Basic</h3>
             <p>900 грн</p>
-            <button onclick="addToCart('Футболка Basic',900)">В кошик</button>
-            <button onclick="addToWishlist('Футболка Basic',900)">❤️</button>
+
+            <p>Розмір:</p>
+            <select id="size2">
+                <option>S</option>
+                <option>M</option>
+                <option selected>L</option>
+            </select>
+
+            <br><br>
+            <button onclick="addToCart(
+                'Футболка Basic',
+                900,
+                document.getElementById('size2').value
+            )">
+                В кошик
+            </button>
+
+            <button onclick="addToWishlist('Футболка Basic',900)">
+                ❤️
+            </button>
         </div>
+
     </div>
 </div>
 
