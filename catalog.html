@@ -25,7 +25,7 @@
 
         <!-- Товар 1 -->
         <div class="card">
-            <img src="https://via.placeholder.com/300x350">
+            <img src="https://www.gingtto.com/cdn/shop/files/IMG_1185.jpg?v=1703843644">
             <h3>Джинси Slim</h3>
             <p>1800 грн</p>
 
@@ -52,7 +52,7 @@
 
         <!-- Товар 2 -->
         <div class="card">
-            <img src="https://via.placeholder.com/300x350">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.cnyGj9KRNigL_jWUylHedwHaLH?w=800&h=1200&rs=1&pid=ImgDetMain&o=7&rm=3">
             <h3>Футболка Basic</h3>
             <p>900 грн</p>
 
@@ -77,6 +77,32 @@
             </button>
         </div>
 
+        <!-- Товар  3-->
+                <div class="card">
+            <img src="https://i.pinimg.com/736x/4e/f8/b2/4ef8b29d502d7420b11490e016ba733d.jpg">
+            <h3>Джинси Baggy</h3>
+            <p>1500 грн</p>
+
+            <p>Розмір:</p>
+            <select id="size3">
+                <option>S</option>
+                <option selected>M</option>
+                <option>L</option>
+            </select>
+
+            <br><br>
+            <button onclick="addToCart(
+                'Джинси Baggy',
+                1500,
+                document.getElementById('size3').value
+            )">
+                В кошик
+            </button>
+
+            <button onclick="addToWishlist('Джинси Baggy',1500)">
+                ❤️
+            </button>
+        </div>
     </div>
 </div>
 
