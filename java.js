@@ -1,94 +1,81 @@
-// загрузка товаров
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-if(document.querySelector(".products-grid")){
-
-fetch("bd.json")
-.then(res=>res.json())
-.then(data=>{
-
-const container=document.querySelector(".products-grid")
-
-data.products.forEach(product=>{
-
-const card=document.createElement("div")
-card.className="card"
-
-card.innerHTML=`
-<img src="${product.image}">
-<h3>${product.name}</h3>
-<p>${product.price} грн</p>
-<button onclick="addToCart(${product.id})">Купити</button>
-`
-
-container.appendChild(card)
-
-})
-
-})
-
+// CART
+function addToCart(name, price) {
+    cart.push({name, price});
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Додано в кошик ✅");
 }
 
+function renderCart() {
+    const list = document.getElementById("cart-list");
+    if (!list) return;
 
-// добавление в корзину
+    list.innerHTML = "";
+    let total = 0;
 
-function addToCart(id){
+    cart.forEach((item, i) => {
+        total += item.price;
+        list.innerHTML += `
+            <div class="cart-item">
+                <span>${item.name}</span>
+                <span>${item.price} грн</span>
+                <button onclick="removeCart(${i})">❌</button>
+            </div>`;
+    });
 
-fetch("bd.json")
-.then(res=>res.json())
-.then(data=>{
-
-const product=data.products.find(p=>p.id===id)
-
-let cart=JSON.parse(localStorage.getItem("cart")) || []
-
-cart.push(product)
-
-localStorage.setItem("cart",JSON.stringify(cart))
-
-alert("Товар додано у кошик")
-
-})
-
+    document.getElementById("total").innerText =
+        "Загальна сума: " + total + " грн";
 }
 
-
-// отображение корзины
-
-if(document.querySelector(".cart-items")){
-
-let cart=JSON.parse(localStorage.getItem("cart")) || []
-
-const container=document.querySelector(".cart-items")
-
-cart.forEach((item,index)=>{
-
-const div=document.createElement("div")
-
-div.className="cart-item"
-
-div.innerHTML=`
-<span>${item.name}</span>
-<span>${item.price} грн</span>
-<button onclick="removeItem(${index})">Видалити</button>
-`
-
-container.appendChild(div)
-
-})
-
+function removeCart(i){
+    cart.splice(i,1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
 }
 
-
-// удаление
-
-function removeItem(index){
-
-let cart=JSON.parse(localStorage.getItem("cart"))
-
-cart.splice(index,1)
-
-localStorage.setItem("cart",JSON.stringify(cart))
-
-location.reload()
-
+// WISHLIST
+function addToWishlist(name, price){
+    wishlist.push({name, price});
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    alert("Додано в обране ❤️");
 }
+
+function renderWishlist(){
+    const list = document.getElementById("wishlist-list");
+    if(!list) return;
+
+    list.innerHTML = "";
+
+    wishlist.forEach((item,i)=>{
+        list.innerHTML += `
+            <div class="cart-item">
+                <span>${item.name}</span>
+                <span>${item.price} грн</span>
+                <button onclick="removeWish(${i})">❌</button>
+            </div>`;
+    });
+}
+
+function removeWish(i){
+    wishlist.splice(i,1);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    renderWishlist();
+}
+
+// CHECKOUT
+function checkout(){
+    if(cart.length === 0){
+        alert("Кошик порожній");
+    } else {
+        alert("Замовлення оформлено ✅");
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+    }
+}
+
+// INIT
+renderCart();
+renderWishlist();

@@ -8,7 +8,7 @@
 <body>
 
 <header>
-    <div>FASHION</div>
+    <div class="logo">FASHION</div>
     <nav>
         <a href="index.html">Головна</a>
         <a href="catalog.html">Каталог</a>
@@ -34,16 +34,17 @@
             </select>
 
             <br><br>
-            <button>Додати в кошик</button>
-            <button>В обране</button>
+            <button onclick="addToCart('Худі Oversize',1200)">В кошик</button>
+            <button onclick="addToWishlist('Худі Oversize',1200)">❤️</button>
 
             <h3>Опис</h3>
-            <p>Стильне худі з м’якого матеріалу, ідеально підходить для повсякденного носіння.</p>
+            <p>Стильне худі з м’якого матеріалу.</p>
         </div>
     </div>
 </div>
 
 <footer>© 2026 Fashion Store</footer>
 
+<script src="java.js"></script>
 </body>
 </html>

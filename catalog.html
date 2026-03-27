@@ -8,7 +8,7 @@
 <body>
 
 <header>
-    <div>FASHION</div>
+    <div class="logo">FASHION</div>
     <nav>
         <a href="index.html">Головна</a>
         <a href="catalog.html">Каталог</a>
@@ -26,19 +26,22 @@
             <img src="https://via.placeholder.com/300x350">
             <h3>Джинси Slim</h3>
             <p>1800 грн</p>
-            <a href="product.html"><button>Переглянути</button></a>
+            <button onclick="addToCart('Джинси Slim',1800)">В кошик</button>
+            <button onclick="addToWishlist('Джинси Slim',1800)">❤️</button>
         </div>
 
         <div class="card">
             <img src="https://via.placeholder.com/300x350">
             <h3>Футболка Basic</h3>
             <p>900 грн</p>
-            <a href="product.html"><button>Переглянути</button></a>
+            <button onclick="addToCart('Футболка Basic',900)">В кошик</button>
+            <button onclick="addToWishlist('Футболка Basic',900)">❤️</button>
         </div>
     </div>
 </div>
 
 <footer>© 2026 Fashion Store</footer>
 
+<script src="java.js"></script>
 </body>
 </html>
