@@ -21,9 +21,9 @@
 <div class="container">
     <h1>Вхід</h1>
 
-    <form onsubmit="login(event)">
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Пароль" required>
+    <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Пароль" required>
         <button type="submit">Увійти</button>
     </form>
 </div>
@@ -31,10 +31,25 @@
 <footer>© 2026 Fashion Store</footer>
 
 <script>
-function login(e){
+document.getElementById("loginForm").addEventListener("submit", function(e){
     e.preventDefault();
-    alert("Вхід виконано ✅");
-}
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    // 🔍 ВАЛІДАЦІЯ
+    if(!email.includes("@")){
+        alert("Введіть коректний email");
+        return;
+    }
+
+    if(password.length < 6){
+        alert("Пароль має бути мінімум 6 символів");
+        return;
+    }
+
+    alert("Валідація пройдена ✅");
+});
 </script>
 
 </body>
